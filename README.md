@@ -61,7 +61,8 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
 
 
 
-<!-- Problem  1: Grouping Anagrams -->
+Problem  1: Grouping Anagrams
+```
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         # The basic idea is to generate a unique hash. So the question is about generating a hash function. 
@@ -78,10 +79,11 @@ class Solution:
             groups[key].append(s)
         
         return list(groups.values())
-
+```
                 
-<!-- Problem 2: Isomorphic strings -->
+Problem 2: Isomorphic strings
 
+```
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
         sMap = {}
@@ -97,3 +99,4 @@ class Solution:
                 tMap[t[i]] = s[i]
         
         return True
+```
