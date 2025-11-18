@@ -58,3 +58,42 @@ Input: pattern = "abba", str = "dog dog dog dog"
 Output: false
 Notes:
 You may assume pattern contains only lowercase letters, and str contains lowercase letters that may be separated by a single space.
+
+
+
+<!-- Problem  1: Grouping Anagrams -->
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        # The basic idea is to generate a unique hash. So the question is about generating a hash function. 
+
+        groups = defaultdict(list)
+        for s in strs:
+            count = ["0"] * 26
+            for c in s:
+                count[ord(c) - ord('a')] = str(int(count[ord(c) - ord('a')]) + 1)
+
+            
+            key = "*".join(count)
+
+            groups[key].append(s)
+        
+        return list(groups.values())
+
+                
+<!-- Problem 2: Isomorphic strings -->
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        sMap = {}
+        tMap = {}
+
+        for i in range(len(s)):
+            if s[i] in sMap and sMap[s[i]] != t[i]:
+                return False
+            elif t[i] in tMap and tMap[t[i]] != s[i]:
+                return False
+            else:
+                sMap[s[i]] = t[i]
+                tMap[t[i]] = s[i]
+        
+        return True
